@@ -1,0 +1,9 @@
+heart disease : https://www.kaggle.com/datasets/sulianova/cardiovascular-disease-dataset/data
+
+fever infection : https://zenodo.org/records/4766192
+
+sleep health : https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset/
+
+stress and anxiety = https://data.world/datagov-uk/0cb6045e-f44f-4dcb-814b-b97840cc80c3
+
+heat stroke = https://www.kaggle.com/datasets/tahiatazin1510997643/heat-stroke
