@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename= 'style.css') }}">
+</head>
+
+<body>
+ <div class="login">
+	
+
+     <!-- Main Input For Receiving Query to our ML 
+      Action is where the data is sent ,in our case it's predict page .
+      If action is Omitted , it assumed to be the current page  
+    -->
+<div class="form">
+  <div class="title">Breast Cancer Prediction</div>
+  <div class="subtitle">Fill the inputs carefully!</div>
+    <form method="post" action="{{ url_for('predict')}}">
+
+      <div class="input-container ic1">
+        <input  class="input" type="text" placeholder=" "  name="radius_mean"/>
+        <div class="cut"></div>
+        <label for="radius_mean" class="placeholder">radius_mean </label>
+      </div>
+
+      <div class="input-container ic2">
+        <input id="perimeter_mean" class="input" type="text" placeholder=" " name="perimeter_mean"/>
+        <div class="cut"></div>
+        <label for="perimeter_mean" class="placeholder">perimeter_mean </label>
+      </div>
+
+      <div class="input-container ic2">
+        <input id="area_mean" class="input" type="text" placeholder=" " name="area_mean" />
+        <div class="cut"></div>
+        <label for="area_mean" class="placeholder">area_mean </label>
+      </div>
+
+      <div class="input-container ic2">
+        <input id="texture_mean" class="input" type="text" placeholder=" " name="texture_mean" />
+        <div class="cut"></div>
+        <label for="texture_mean" class="placeholder">texture_mean </label>
+      </div>
+      
+        <button type="submit" class="submit" >Predict</button>
+    </form>
+  </div class="prediction"> 
+    {% if prediction_text %}
+    <h2>{{ prediction_text }}</h2>
+    {% endif %}
+ </div>
+
+</body>
+</html>

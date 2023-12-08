@@ -1,0 +1,63 @@
+from flask import Flask , render_template, jsonify, request
+import pickle
+import numpy as np
+import pandas as pd
+from sklearn.impute import SimpleImputer
+#creating an app object using the Flask class
+app = Flask(__name__)
+
+#load the pickel model 
+model = pickle.load(open("../models/heart_disease_classifier.pkl", "rb"))
+
+data = pd.read_csv('../data/heart_disease.csv')
+mean_data = data.drop(['trestbps', 'fbs', 'restecg' , 'thalach', 'exang', 'oldpeak', 'slope', 'ca','thal','target'], axis=1).mean()
+
+#Define the route to be home 
+#use the route() decorator to tell Flask what URL should trigger our function .
+@app.route('/')
+def Home():
+    # print(column_names)
+    return render_template("index.html") #<----index.html file should be in 'templates' folder .
+
+@app.route("/predict", methods = ['POST'])
+def predict():
+    float_features = [float(x) for x in request.form.values()] # fetching the values from the form and convert it to floats 
+    # features = [np.array(float_features)] #converting to an array that has the same shape of our prediction data 
+    # features = [np.concatenate([float_features[:4], mean_data.tolist()])]
+    features = float_features+mean_data.tolist()
+
+    features = [np.array(features)]
+    
+    imputer = SimpleImputer(strategy='mean')
+    features = imputer.fit_transform(features)
+
+    prediction = model.predict(features) #make predictions .
+
+    return render_template("index.html", prediction_text = "health care prediction {}".format(prediction))
+
+
+# @app.route("/predict", methods=['POST'])
+# def predict():
+#     selected_features = ['radius_mean', 'perimeter_mean', 'area_mean', 'texture_mean']
+#     input_values = [float(request.form[name]) for name in selected_features]
+#     features = input_values + mean_data.tolist()
+
+#     features = [np.array(features)]
+
+#     imputer = SimpleImputer(strategy='mean')
+#     features = imputer.fit_transform(features)
+
+#     prediction = model.predict(features)
+#     return render_template("index.html", prediction_text="Breast cancer prediction {}".format(prediction))
+
+
+
+
+
+
+
+
+
+if __name__ == "__main__": #main function 
+
+    app.run(debug=True , port= 5000 , host='0.0.0.0')
