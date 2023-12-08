@@ -7,7 +7,7 @@
 
 ## Overview
 
-Sihati 4.0 is a Raspberry Pi-based project designed to provide real-time health monitoring using various sensors. It aims to track vital signs such as heart rate, oxygen saturation, and temperature, offering users valuable insights into their well-being. This aims to enable proactive health management by detecting anomalies associated with conditions such as fever, respiratory issues, cardiovascular conditions, hypothermia, stress, and anxiety. The project combines hardware and software components to create a comprehensive health monitoring solution.
+Sihati 4.0 is a Raspberry Pi-based project designed to provide real-time health monitoring using various sensors. It aims to track vital signs such as heart rate, oxygen saturation, and temperature, offering users valuable insights into their well-being. This aims to enable proactive health maginagement by detecting anomalies associated with conditions such as fever, respiratory issues, cardiovascular conditions, hypothermia, stress, and anxiety. The project combines hardware and software components to create a comprehensive health monitoring solution.
 
 ## Features
 - Real-time monitoring of heart rate, oxygen saturation, and temperature.
