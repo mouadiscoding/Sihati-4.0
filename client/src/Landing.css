@@ -1,0 +1,384 @@
+* {
+  font-family: "helvetica";
+}
+nav {
+  width: 105%;
+}
+.main {
+  width: 100%;
+  margin-top: -1rem;
+}
+.group-child {
+  position: absolute;
+  top: 0.08em;
+  left: -0.05em;
+  width: 12.09em;
+  height: 3.41em;
+}
+.patients,
+.patients1,
+.settings {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 201.36px);
+  font-size: 1.5em;
+  font-weight: 500;
+}
+.patients1,
+.settings {
+  left: calc(50% - 45.5px);
+}
+.settings {
+  left: calc(50% + 110.36px);
+}
+.group-wrapper,
+.patients-parent {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 201.36px);
+  width: 25.17em;
+  height: 1.81em;
+}
+.group-wrapper {
+  top: 0.51em;
+  left: calc(50% - 212.46px);
+}
+.welcome-dr-fluka {
+  position: absolute;
+  top: 0.35em;
+  right: 2.97em;
+  font-size: 1.5em;
+  font-weight: 300;
+}
+.group-item,
+.welcome-dr-fluka-parent {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2.81em;
+}
+.group-item {
+  border-radius: 10px;
+  background-color: #d9d9d9;
+  width: 2.81em;
+}
+.welcome-dr-fluka-parent {
+  width: 17.2em;
+}
+.group-inner,
+.group-parent {
+  position: absolute;
+  top: 2.65em;
+  left: 3.32em;
+  width: 87.44em;
+  height: 3.49em;
+}
+.group-inner {
+  width: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1) inset;
+  height: 45.29em;
+}
+.rectangle-div {
+  position: absolute;
+  width: 50.96%;
+  top: 7.44em;
+  right: 26.06%;
+  left: 22.98%;
+  border-radius: 26px;
+  background-color: #d9d9d9;
+  padding: 0;
+  height: 12.86em;
+}
+.age-21,
+.age-211,
+.age-212,
+.fluka-benabdelkader {
+  position: absolute;
+  top: 0;
+  left: 16.64%;
+  font-size: 1.25em;
+  font-weight: 500;
+}
+.age-21,
+.age-211,
+.age-212 {
+  top: 1.88em;
+  font-size: 1em;
+  font-weight: 300;
+}
+.age-211,
+.age-212 {
+  top: 11.23em;
+  left: 0;
+}
+.age-212 {
+  top: 16.48em;
+}
+.blood-type,
+.gender-male,
+.gender-male1,
+.gender-male2 {
+  position: absolute;
+  top: 1.88em;
+  left: 47.67%;
+  font-size: 1em;
+  font-weight: 300;
+}
+.blood-type,
+.gender-male1,
+.gender-male2 {
+  top: 12.98em;
+  left: 0;
+}
+.blood-type,
+.gender-male2 {
+  top: 19.98em;
+}
+.blood-type {
+  top: 3.39em;
+  left: 16.64%;
+}
+.blood-type1,
+.blood-type2,
+.height-190cm,
+.stats,
+.weight-60kg {
+  position: absolute;
+  top: 14.73em;
+  left: 0;
+  font-size: 1em;
+  font-weight: 300;
+}
+.blood-type2,
+.height-190cm,
+.stats,
+.weight-60kg {
+  top: 18.23em;
+}
+.height-190cm,
+.stats,
+.weight-60kg {
+  top: 6.12em;
+  font-weight: 500;
+}
+.height-190cm,
+.stats {
+  top: 8.91em;
+}
+.height-190cm {
+  top: 6.12em;
+  left: 67.07%;
+}
+.fluka-benabdelkader-parent,
+.group-child1 {
+  position: absolute;
+  width: 81.25%;
+  top: 21.91em;
+  right: 9.28%;
+  left: 9.47%;
+  height: 21.1em;
+}
+.group-child1 {
+  width: 87.68%;
+  top: 3.12em;
+  right: 7.7%;
+  left: 4.62%;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  border: 2px solid #5040b0;
+  box-sizing: border-box;
+  height: 3.09em;
+}
+.looking-for-a {
+  position: absolute;
+  top: 6.86em;
+  left: 11.45%;
+  font-size: 0.63em;
+  font-weight: 300;
+  color: #898989;
+}
+.group-child2,
+.group-child3,
+.rectangle-parent {
+  position: absolute;
+  width: 26.7%;
+  top: 10.16em;
+  right: 70.57%;
+  left: 2.73%;
+  height: 45.29em;
+}
+.group-child2,
+.group-child3 {
+  width: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.25) inset;
+}
+.group-child3 {
+  top: 0.06em;
+  background-color: #5040b0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  height: 3.12em;
+}
+.age,
+.name,
+.status {
+  position: absolute;
+  font-size: 1.25em;
+}
+.name {
+  top: 0.68em;
+  left: 6.24%;
+  font-weight: 500;
+}
+.age,
+.status {
+  width: 7.17%;
+  top: 0.65em;
+  left: 68.33%;
+  font-family: Inter;
+  display: inline-block;
+  height: 0.8em;
+}
+.age {
+  width: 5.84%;
+  top: 0.55em;
+  left: 43.85%;
+  height: 0.75em;
+}
+.group-child4,
+.group-child5 {
+  position: absolute;
+  width: 10.13%;
+  top: 4.5em;
+  right: 11.04%;
+  left: 78.83%;
+  border-radius: 15px;
+  background-color: #bbffce;
+  height: 1.81em;
+}
+.group-child5 {
+  top: 0;
+}
+.group-child6,
+.rectangle-wrapper {
+  position: absolute;
+  right: 0;
+  height: 1.81em;
+}
+.group-child6 {
+  width: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 15px;
+  background-color: rgba(255, 92, 92, 0.42);
+}
+.rectangle-wrapper {
+  width: 21.17%;
+  top: 2.25em;
+  left: 78.83%;
+}
+.loka-7blmloka,
+.mehdi-benabdelkader {
+  position: absolute;
+  width: 23.57%;
+  top: 0.33em;
+  left: 0;
+  font-size: 1em;
+  font-weight: 300;
+  display: inline-block;
+  height: 1.51em;
+}
+.loka-7blmloka {
+  top: 4.79em;
+}
+.benabdelkader-fluka,
+.div,
+.div1 {
+  position: absolute;
+  top: 2.56em;
+  left: 49.86%;
+  font-size: 1em;
+  font-weight: 300;
+}
+.benabdelkader-fluka,
+.div1 {
+  top: 4.79em;
+}
+.benabdelkader-fluka {
+  width: 23.57%;
+  top: 2.56em;
+  left: 0;
+  display: inline-block;
+  height: 1.51em;
+}
+.div2,
+.needs-checkup,
+.stable,
+.stable1 {
+  position: absolute;
+  top: 0.33em;
+  left: 49.86%;
+  font-size: 1em;
+  font-weight: 300;
+}
+.needs-checkup,
+.stable,
+.stable1 {
+  left: 81.1%;
+  color: #002e0d;
+}
+.needs-checkup,
+.stable1 {
+  top: 2.56em;
+  color: #2e0000;
+}
+.stable1 {
+  top: 4.79em;
+  color: #002e0d;
+}
+.rectangle-container,
+.rectangle-group {
+  position: absolute;
+  width: 78.89%;
+  top: 5.19em;
+  right: 15.06%;
+  left: 6.04%;
+  height: 6.31em;
+  color: #000;
+}
+
+.rectangle-group {
+  width: 64.56%;
+  top: 10.25em;
+  right: 3.63%;
+  left: 31.81%;
+  height: 45.29em;
+  color: #fff;
+}
+.landing1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  width: 94.5em;
+  height: 61.38em;
+  overflow: hidden;
+}
+.landing {
+  position: relative;
+  width: 100%;
+  height: 61.38em;
+  text-align: left;
+  color: #000;
+  font-family: Gilroy;
+}
