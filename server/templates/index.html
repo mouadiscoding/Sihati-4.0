@@ -16,36 +16,71 @@
       If action is Omitted , it assumed to be the current page  
     -->
 <div class="form">
-  <div class="title">Breast Cancer Prediction</div>
+  <div class="title">Health Information</div>
   <div class="subtitle">Fill the inputs carefully!</div>
-    <form method="post" action="{{ url_for('predict')}}">
 
-      <div class="input-container ic1">
-        <input  class="input" type="text" placeholder=" "  name="radius_mean"/>
-        <div class="cut"></div>
-        <label for="radius_mean" class="placeholder">radius_mean </label>
-      </div>
+  <form action="http://localhost:5000/predict" method="post" id="heartForm">
+    <label for="age">Age (in years):</label>
+    <input type="number" name="age" id="age" required><br>
 
-      <div class="input-container ic2">
-        <input id="perimeter_mean" class="input" type="text" placeholder=" " name="perimeter_mean"/>
-        <div class="cut"></div>
-        <label for="perimeter_mean" class="placeholder">perimeter_mean </label>
-      </div>
+    <label for="sex">Sex:</label>
+    <select name="sex" id="sex" required>
+        <option value="1">Male</option>
+        <option value="0">Female</option>
+    </select><br>
 
-      <div class="input-container ic2">
-        <input id="area_mean" class="input" type="text" placeholder=" " name="area_mean" />
-        <div class="cut"></div>
-        <label for="area_mean" class="placeholder">area_mean </label>
-      </div>
+    <label for="cp">Chest Pain Type:</label>
+    <select name="cp" id="cp" required>
+        <option value="1">Typical Angina</option>
+        <option value="2">Atypical Angina</option>
+        <option value="3">Non-anginal Pain</option>
+        <option value="4">Asymptomatic</option>
+    </select><br>
 
-      <div class="input-container ic2">
-        <input id="texture_mean" class="input" type="text" placeholder=" " name="texture_mean" />
-        <div class="cut"></div>
-        <label for="texture_mean" class="placeholder">texture_mean </label>
-      </div>
-      
-        <button type="submit" class="submit" >Predict</button>
-    </form>
+    <label for="chol">Serum Cholestoral (mg/dl):</label>
+    <input type="number" name="chol" id="chol" required><br>
+
+    <label for="fbs">Fasting Blood Sugar > 120 mg/dl:</label>
+    <select name="fbs" id="fbs" required>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select><br>
+
+    <label for="restecg">Resting Electrocardiographic Results:</label>
+    <select name="restecg" id="restecg" required>
+        <option value="0">Normal</option>
+        <option value="1">Abnormal (ST-T Wave)</option>
+        <option value="2">Probable or Definite Left Ventricular Hypertrophy</option>
+    </select><br>
+
+    <label for="exang">Exercise Induced Angina:</label>
+    <select name="exang" id="exang" required>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select><br>
+
+    <label for="oldpeak">ST Depression Induced by Exercise Relative to Rest:</label>
+    <input type="number" name="oldpeak" id="oldpeak" step="0.1" required><br>
+
+    <label for="slope">Slope of the Peak Exercise ST Segment:</label>
+    <select name="slope" id="slope" required>
+        <option value="1">Upsloping</option>
+        <option value="2">Flat</option>
+        <option value="3">Downsloping</option>
+    </select><br>
+
+    <label for="ca">Number of Major Vessels Colored by Flourosopy (0-3):</label>
+    <input type="number" name="ca" id="ca" min="0" max="3" required><br>
+
+    <label for="thal">Thal:</label>
+    <select name="thal" id="thal" required>
+        <option value="3">Normal</option>
+        <option value="6">Fixed Defect</option>
+        <option value="7">Reversible Defect</option>
+    </select><br>
+
+    <input type="submit" value="Submit">
+</form>
   </div class="prediction"> 
     {% if prediction_text %}
     <h2>{{ prediction_text }}</h2>

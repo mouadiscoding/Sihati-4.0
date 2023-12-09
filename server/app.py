@@ -2,15 +2,15 @@ from flask import Flask , render_template, jsonify, request
 import pickle
 import numpy as np
 import pandas as pd
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
+from sklearn.compose import ColumnTransformer
 #creating an app object using the Flask class
 app = Flask(__name__)
 
 #load the pickel model 
 model = pickle.load(open("../models/heart_disease_classifier.pkl", "rb"))
-
-data = pd.read_csv('../data/heart_disease.csv')
-mean_data = data.drop(['trestbps', 'fbs', 'restecg' , 'thalach', 'exang', 'oldpeak', 'slope', 'ca','thal','target'], axis=1).mean()
 
 #Define the route to be home 
 #use the route() decorator to tell Flask what URL should trigger our function .
@@ -21,17 +21,60 @@ def Home():
 
 @app.route("/predict", methods = ['POST'])
 def predict():
-    float_features = [float(x) for x in request.form.values()] # fetching the values from the form and convert it to floats 
-    # features = [np.array(float_features)] #converting to an array that has the same shape of our prediction data 
-    # features = [np.concatenate([float_features[:4], mean_data.tolist()])]
-    features = float_features+mean_data.tolist()
 
-    features = [np.array(features)]
+    df = pd.read_csv('../data/heart_disease.csv')
+    df = df[(df.thal != '1') & (df.thal != '2')]
+
+    age = int(request.form['age'])
+    sex = int(request.form['sex'])
+    cp = int(request.form['cp'])
+    trestbps = float(100)
+    chol = int(request.form['chol'])
+    fbs = int(request.form['fbs'])
+    restecg = int(request.form['restecg'])
+    thalach = float(154)
+    exang = int(request.form['exang'])
+    oldpeak = float(request.form['oldpeak'])
+    slope = int(request.form['slope'])
+    ca = int(request.form['ca'])
+    thal = int(request.form['thal'])
+
+    data = {
+    'age': [age],
+    'sex': [sex],
+    'cp': [cp],
+    'trestbps': [trestbps],
+    'chol': [chol],
+    'fbs': [fbs],
+    'restecg': [restecg],
+    'thalach': [thalach],
+    'exang': [exang],
+    'oldpeak': [oldpeak],
+    'slope': [slope],
+    'ca': [ca],
+    'thal': [thal]
+    }
     
-    imputer = SimpleImputer(strategy='mean')
-    features = imputer.fit_transform(features)
+    df = pd.concat([pd.DataFrame([data]), df], ignore_index=True)
+    df = df.dropna()
+    X = df.drop("target", axis=1)
+    nominal_features = ["sex", "cp", "fbs", "restecg", "exang", "slope", "ca", "thal"]
 
-    prediction = model.predict(features) #make predictions .
+    nominal_transformer = Pipeline(steps=[
+        ('onehot', OneHotEncoder())  
+    ])
+
+    encoder = ColumnTransformer(
+        transformers=[
+            ('nominal', nominal_transformer, nominal_features)
+        ], remainder='passthrough'
+    )
+
+    # Fit the encoder first
+    encoded_X = encoder.fit_transform(X)
+    encoded_X = pd.DataFrame(encoded_X)
+    X = encoded_X.head(1)
+    prediction = model.predict(X) #make predictions .
 
     return render_template("index.html", prediction_text = "health care prediction {}".format(prediction))
 
@@ -60,4 +103,4 @@ def predict():
 
 if __name__ == "__main__": #main function 
 
-    app.run(debug=True , port= 5000 , host='0.0.0.0')
+    app.run(debug=True)
