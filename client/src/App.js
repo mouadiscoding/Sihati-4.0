@@ -4,23 +4,72 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function App() {
-  const [members, setMembers] = useState([]);
+  const [formData, setFormData] = useState({
+    age: "",
+    name: "",
+    lastName: "",
+  });
 
-  useEffect(() => {
-    axios
-      .get("/members")
-      .then((response) => setMembers(response.data.members))
-      .catch((error) => console.error("Error fetching data: ", error));
-  }, []);
+  const handleChange = (e) => {
+    const { name, value } = e.target; //deconstructing
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      // Send form data to the Flask backend
+      const response = await axios.post(
+        "http://localhost:8000/prediction",
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
+  };
 
   return (
-    <div>
-      <h1>Members</h1>
-      <ul>
-        {members.map((member, index) => (
-          <li key={index}>{member}</li>
-        ))}
-      </ul>
+    // <Landing />
+    <div className="predictionForm">
+      <h1>Health Information </h1>
+      <h2>Fill the inputs carefully!</h2>
+      <form onSubmit={handleSubmit}>
+        <p>age</p>
+        <input
+          type="number"
+          name="age"
+          id="age"
+          value={formData.age}
+          onChange={handleChange}
+        />
+        <br />
+        <p>name</p>
+        <input
+          type="text"
+          name="name"
+          id="chol"
+          value={formData.name}
+          onChange={handleChange}
+        />
+        <p>last name </p>
+        <input
+          type="text"
+          name="lastName"
+          id="ca"
+          value={formData.lastName}
+          onChange={handleChange}
+        />
+        <br />
+
+        <input type="submit" value="Submit" />
+      </form>
     </div>
   );
 }
