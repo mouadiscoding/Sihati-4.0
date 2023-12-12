@@ -7,8 +7,11 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 from sklearn.compose import ColumnTransformer
+from flask_cors import CORS,cross_origin
 #creating an app object using the Flask class
 app = Flask(__name__)
+
+CORS(app,support_credentials=True) 
 
 #load the pickel model 
 model = pickle.load(open("../models/heart_disease_classifier.pkl", "rb"))
@@ -21,27 +24,29 @@ def Home():
     return render_template("index.html") #<----index.html file should be in 'templates' folder .
 
 @app.route("/predict", methods = ['POST'])
+@cross_origin(supports_credentials=True)
 def predict():
 
     df = pd.read_csv('../data/heart_disease.csv')
     df = df[(df.thal != '1') & (df.thal != '2')]
-    
-    age = int(request.form['age'])
-    sex = int(request.form['sex'])
-    cp = int(request.form['cp'])
+
+    form_data = request.get_json()
+    age = int(form_data.get('age'))
+    sex = int(form_data.get('sex'))
+    cp = int(form_data.get('cp'))
     trestbps_list = [71,72,73,74,75]
     trestbps = random.choice(trestbps_list)
     #this value is not from form so we pick a random one in the list
-    chol = int(request.form['chol'])
-    fbs = int(request.form['fbs'])
-    restecg = int(request.form['restecg'])
+    chol = int(form_data.get('chol'))
+    fbs = int(form_data.get('fbs'))
+    restecg = int(form_data.get('restecg'))
     thalach_list = [80,80.5,81,81.5,82,82.5,83,83.5,84]
     thalach=random.choice(thalach_list)  #not from form too 
-    exang = int(request.form['exang'])
-    oldpeak = float(request.form['oldpeak'])
-    slope = int(request.form['slope'])
-    ca = int(request.form['ca'])
-    thal = int(request.form['thal'])
+    exang = int(form_data.get('exang'))
+    oldpeak = float(form_data.get('oldpeak'))
+    slope = int(form_data.get('slope'))
+    ca = int(form_data.get('ca'))
+    thal = int(form_data.get('thal'))
 
     data = {
     'age': [age],
@@ -81,6 +86,7 @@ def predict():
     prediction = model.predict(X) #make predictions .
 
     return render_template("index.html", prediction_text = "health care prediction {}".format(prediction))
+
 
 
 # @app.route("/predict", methods=['POST'])

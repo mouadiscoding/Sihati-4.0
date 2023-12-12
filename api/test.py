@@ -35,15 +35,12 @@ def user(usr):
 @app.route('/prediction', methods=["POST"])
 @cross_origin(supports_credentials=True)
 def submit_form():
-    data = request.json 
+    data = request.json
+    print(data) 
     #Assuming data is sent in JSON format
     #Process the form data as needed
-    print(data)
-    name = data.get("name")
-    print(name)
-    age=int(data.get("age"))
-    print(type(age))
     return "hello"
+    
 #, form_data=data)
 
 
