@@ -1,4 +1,5 @@
 from flask import Flask , render_template, jsonify, request
+import random
 import pickle
 import numpy as np
 import pandas as pd
@@ -24,15 +25,18 @@ def predict():
 
     df = pd.read_csv('../data/heart_disease.csv')
     df = df[(df.thal != '1') & (df.thal != '2')]
-
+    
     age = int(request.form['age'])
     sex = int(request.form['sex'])
     cp = int(request.form['cp'])
-    trestbps = float(100)
+    trestbps_list = [71,72,73,74,75]
+    trestbps = random.choice(trestbps_list)
+    #this value is not from form so we pick a random one in the list
     chol = int(request.form['chol'])
     fbs = int(request.form['fbs'])
     restecg = int(request.form['restecg'])
-    thalach = float(154)
+    thalach_list = [80,80.5,81,81.5,82,82.5,83,83.5,84]
+    thalach=random.choice(thalach_list)  #not from form too 
     exang = int(request.form['exang'])
     oldpeak = float(request.form['oldpeak'])
     slope = int(request.form['slope'])
