@@ -4,6 +4,16 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function ResultsPage() {
+  const [results, setResults] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("/predictions")
+      .then((response) => setResults(response.data))
+      .catch((error) => console.error("Error fetching data: ", error));
+  }, []);
+
+  console.log(results.temperature);
   return (
     <>
       <div
