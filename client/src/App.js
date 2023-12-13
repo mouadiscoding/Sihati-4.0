@@ -6,21 +6,23 @@ import axios from "axios";
 function App() {
   const [formData, setFormData] = useState({
     age: "",
-    sex: "",
-    cp: "",
+    sex: "1",
+    cp: "1",
     chol: "",
-    fbs: "",
-    restecg: "",
-    exang: "",
+    fbs: "1",
+    restecg: "0",
+    exang: "1",
     oldpeak: "",
-    slope: "",
+    slope: "1",
     ca: "",
-    thal: "",
+    thal: "3",
   });
+  const [prediction, setPrediction] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target; //deconstructing
     setFormData({ ...formData, [name]: value });
+    console.log(value);
   };
 
   const handleSubmit = async (e) => {
@@ -28,7 +30,7 @@ function App() {
     try {
       // Send form data to the Flask backend
       const response = await axios.post(
-        "http://127.0.0.1:8000/prediction",
+        "http://127.0.0.1:5000/prediction",
         formData,
         {
           headers: {
@@ -37,7 +39,7 @@ function App() {
           withCredentials: true,
         }
       );
-      console.log(response.data);
+      setPrediction(response.data.prediction);
     } catch (error) {
       console.error("Error submitting form:", error);
     }
@@ -203,6 +205,8 @@ function App() {
         <br />
         <input type="submit" value="Submit" onChange={handleChange} />
       </form>
+
+      <h1>Prediction: {prediction !==null ? prediction : "No prediction"}</h1>
     </div>
   );
 }
