@@ -2,7 +2,7 @@ from flask import Flask, redirect, url_for, render_template, request, jsonify
 from flask_cors import CORS,cross_origin
 app=Flask(__name__);
 
-CORS(app,support_credentials=True)  # Enables CORS for all routes
+CORS(app,origins='http://localhost:3000',support_credentials=True)  # Enables CORS for all routes
 
 
 ####testing get (works)
@@ -33,7 +33,7 @@ def user(usr):
 # *******************************************
 
 @app.route('/prediction', methods=["POST","GET"])
-@cross_origin(supports_credentials=True)
+#@cross_origin(supports_credentials=True)
 def submit_form():
     data = request.json
     print(data) 

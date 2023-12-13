@@ -2,13 +2,17 @@ import "./App.css";
 import Landing from "./Landing";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import mehdi from "./mehdi.jpeg";
+import healthy from "./Healthy.png";
+import notification from "./Notification.png";
+import logo from "./sihati.png";
 
 export default function ResultsPage() {
   const [results, setResults] = useState("");
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/prediction", {
+      .get("http://localhost:8000/prediction", {
         headers: {
           "Content-Type": "application/json",
         },
@@ -76,20 +80,11 @@ export default function ResultsPage() {
                   top: 0,
                   position: "absolute",
                 }}
-                src="https://via.placeholder.com/357x357"
+                src={healthy}
               />
-              <div
-                style={{
-                  width: 373.41,
-                  height: 330.92,
-                  left: -8.1,
-                  top: 14.7,
-                  position: "absolute",
-                  background: "#FF5C5C",
-                }}
-              />
+             
             </div>
-            <div
+            <dhhhhhhiv
               style={{
                 width: 254.71,
                 height: 147.67,
@@ -98,96 +93,7 @@ export default function ResultsPage() {
                 position: "absolute",
               }}
             >
-              <div
-                style={{
-                  width: 254.71,
-                  height: 87.78,
-                  left: -0,
-                  top: 59.89,
-                  position: "absolute",
-                }}
-              >
-                <div
-                  style={{
-                    width: 85.54,
-                    height: 85.54,
-                    left: 0,
-                    top: 0,
-                    position: "absolute",
-                    background: "#FF3E3E",
-                    borderRadius: 9999,
-                  }}
-                />
-                <div
-                  style={{
-                    width: 85.54,
-                    height: 85.54,
-                    left: 169.17,
-                    top: 2.25,
-                    position: "absolute",
-                    background: "#FF3E3E",
-                    borderRadius: 9999,
-                  }}
-                />
-              </div>
-              <div
-                style={{
-                  width: 149,
-                  height: 57.26,
-                  left: 52.86,
-                  top: 23.03,
-                  position: "absolute",
-                }}
-              >
-                <div
-                  style={{
-                    width: 41.99,
-                    height: 57.26,
-                    left: 0,
-                    top: 0,
-                    position: "absolute",
-                    background: "white",
-                    borderRadius: 25,
-                    border: "8px #393031 solid",
-                  }}
-                />
-                <div
-                  style={{
-                    width: 41.99,
-                    height: 57.26,
-                    left: 107,
-                    top: -0,
-                    position: "absolute",
-                    background: "white",
-                    borderRadius: 25,
-                    border: "8px #393031 solid",
-                  }}
-                />
-              </div>
-              <div
-                style={{
-                  width: 128.02,
-                  height: 52.53,
-                  left: 63.35,
-                  top: 95.14,
-                  position: "absolute",
-                  background: "#393031",
-                  borderRadius: 49,
-                }}
-              ></div>
-              <div
-                style={{
-                  width: 19.3,
-                  height: 18.65,
-                  left: 4.85,
-                  top: 0,
-                  position: "absolute",
-                  transform: "rotate(15.08deg)",
-                  transformOrigin: "0 0",
-                  border: "14px #FFBFBF solid",
-                }}
-              ></div>
-            </div>
+            </dhhhhhhiv>
           </div>
           <div
             style={{
@@ -260,7 +166,7 @@ export default function ResultsPage() {
               top: 18.6,
               position: "absolute",
             }}
-            src="https://via.placeholder.com/31x31"
+            src={notification}
           />
           <div
             style={{
@@ -278,7 +184,7 @@ export default function ResultsPage() {
                 left: 0,
                 top: 0,
                 position: "absolute",
-                background: "#D9D9D9",
+                // background: "#D9D9D9",
                 borderRadius: 10,
               }}
             />
@@ -290,7 +196,7 @@ export default function ResultsPage() {
                 top: -6.54,
                 position: "absolute",
               }}
-              src="https://via.placeholder.com/88x88"
+              src={mehdi}
             />
           </div>
         </div>
@@ -312,70 +218,13 @@ export default function ResultsPage() {
               position: "absolute",
             }}
           >
-            <div
-              style={{
-                width: 35.17,
-                height: 53.42,
-                left: 18.87,
-                top: -0,
-                position: "absolute",
-                background: "#5040B0",
-              }}
-            ></div>
-            <div
-              style={{
-                width: 171.07,
-                height: 53.42,
-                left: 18.87,
-                top: -0,
-                position: "absolute",
-                background: "#5040B0",
-              }}
-            ></div>
-            <div
-              style={{
-                width: 17.12,
-                height: 22.23,
-                left: 17.58,
-                top: 23.73,
-                position: "absolute",
-                transform: "rotate(47.13deg)",
-                transformOrigin: "0 0",
-                background: "#5040B0",
-              }}
-            ></div>
-            <div
-              style={{
-                width: 18.94,
-                height: 24.05,
-                left: 17.63,
-                top: 22.45,
-                position: "absolute",
-                transform: "rotate(47.13deg)",
-                transformOrigin: "0 0",
-                background: "#5040B0",
-              }}
-            ></div>
-            <div
-              style={{
-                width: 8.9,
-                height: 8.9,
-                left: 45.5,
-                top: 2.55,
-                position: "absolute",
-                background: "#5040B0",
-              }}
-            ></div>
-            <div
-              style={{
-                width: 4.63,
-                height: 4.63,
-                left: 47.64,
-                top: 4.68,
-                position: "absolute",
-                background: "#5040B0",
-              }}
-            ></div>
+            <img src={logo}  style={{
+              width: 189.94,
+              height: 53.42,
+              left: 0,
+              top: 0,
+              position: "absolute",
+            }}/>
           </div>
           <div
             style={{
