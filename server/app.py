@@ -1,4 +1,4 @@
-from flask import Flask , render_template, jsonify, request
+from flask import Flask , render_template, jsonify, request,g
 import pickle
 import numpy as np
 import pandas as pd
@@ -24,7 +24,7 @@ def Home():
     return render_template("index.html") #<----index.html file should be in 'templates' folder .
 
 @app.route("/prediction", methods = ['POST'])
-# @cross_origin(supports_credentials=True)
+@cross_origin(supports_credentials=True)
 def predict():
 
     df = pd.read_csv('../data/heart_disease.csv')
@@ -93,10 +93,21 @@ def predict():
                      "heart": thalach,
                      "blood": trestbps,
                      "temperature": temperature}
+    
+    #making response_data a global variable
+    g.response_data=response_data
+
     return jsonify(response_data)
     #return render_template("index.html", prediction_text = "health care prediction {}".format(prediction))
 
-
+@app.route('/getprediction', methods=["GET"])
+@cross_origin(supports_credentials=True)
+def result():
+    
+    if request.method=="GET":
+        response__data=getattr(g,"response_data",None)
+        print(response__data)
+        return (response__data)
 
 # @app.route("/predict", methods=['POST'])
 # def predict():
@@ -122,4 +133,4 @@ def predict():
 
 if __name__ == "__main__": #main function 
 
-    app.run(debug=True)
+    app.run(port=8000,debug=True)

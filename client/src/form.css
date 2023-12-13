@@ -1,0 +1,67 @@
+.navBar {
+  color: rgb(74, 74, 74);
+}
+input,
+select {
+  border-radius: 10px;
+  border-color: rgba(0, 0, 0, 0.482);
+  box-shadow: inset 2px 2px 4px 0 rgba(0, 0, 0, 0.2);
+  width: 300px;
+  height: 30px;
+  margin-top: 1rem;
+  color: rgba(128, 128, 128, 0.646);
+  box-shadow: 0px 0px 0px transparent;
+  border: 2px solid gray;
+}
+input[type="submit"] {
+  background-color: #5040b0;
+  border-radius: 10px;
+  height: 50px;
+  color: white;
+  font-weight: bold;
+  font-size: larger;
+  cursor: pointer;
+  transition: ease 1s;
+  transition-timing-function: cubic-bezier(0.42, 0, 0.18, 1.34);
+  box-shadow: 0px 0px 0px transparent;
+}
+input[type="submit"]:hover {
+  transform: translateY(-5px);
+  border: 3px solid #5040b0;
+  background-color: #5140b02f;
+  color: #5040b0;
+}
+label {
+  color: #5040b0;
+  font-weight: bold;
+  font-size: 16px;
+}
+.formPartsContainer {
+  display: grid;
+  grid-template-columns: repeat(
+    3,
+    1fr
+  ); /* Three columns, each taking up 1/3 of the available width */
+  width: 80vw;
+}
+
+/* .firstPart {
+}
+.secondPart {
+}
+.thirdPart {
+} */
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(
+    3,
+    1fr
+  ); /* Three columns, each taking up 1/3 of the available width */
+  width: 95vw; /* Set the width of the container to 100% of the viewport width */
+}
+
+.grid-item {
+  border: 1px solid #ccc;
+  /* Additional styling for your grid items */
+}

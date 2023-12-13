@@ -33,17 +33,33 @@ def user(usr):
 # *******************************************
 
 @app.route('/prediction', methods=["POST","GET"])
-#@cross_origin(supports_credentials=True)
+@cross_origin(supports_credentials=True)
 def submit_form():
-    data = request.json
-    print(data) 
-    response_data = {"prediction": "1",
+    if request.method == "POST":
+        data = request.json
+        print(data) 
+        return ("form submitted")
+    
+    
+
+
+@app.route('/getprediction', methods=["GET"])
+@cross_origin(supports_credentials=True)
+def result():
+    
+    if request.method=="GET":
+        response_data = {"prediction": "0",
                      "heart": "thalach",
                      "blood": "trestbps",
                      "temperature": "40"}
-    return jsonify(response_data)
+        print(response_data)
+        return (response_data)
     #Assuming data is sent in JSON format
-    #Process the form data as needed
+    #Process the form data as needed    
+    
+    
+    
+    
     
     
 #, form_data=data)

@@ -1,28 +1,35 @@
 import "./App.css";
+import "./animation.css";
 import Landing from "./Landing";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import mehdi from "./mehdi.jpeg";
 import healthy from "./Healthy.png";
+import sick from "./Sick.png";
 import notification from "./Notification.png";
 import logo from "./sihati.png";
 
 export default function ResultsPage() {
   const [results, setResults] = useState("");
+  const [source, setSource] = useState(healthy);
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/prediction", {
+      .get("http://localhost:8000/getprediction", {
         headers: {
           "Content-Type": "application/json",
         },
         withCredentials: true,
       })
-      .then((response) => setResults(response.results))
+      .then((response) => setResults(response.data))
       .catch((error) => console.error("Error fetching data: ", error));
   }, []);
+  // useEffect(() => {
+  //   // Your condition and setSource logic
+  //   setSource(`${results.prediction == 1 ? healthy : sick}`);
+  // }, [results.prediction]);
 
-  console.log(results.temperature);
+  // console.log(results.temperature);
   return (
     <>
       <div
@@ -34,6 +41,7 @@ export default function ResultsPage() {
         }}
       >
         <div
+          className="sideBar"
           style={{
             width: 502.79,
             height: 755.18,
@@ -64,6 +72,7 @@ export default function ResultsPage() {
             }}
           >
             <div
+              className=".picture-container"
               style={{
                 width: 357.2,
                 height: 357.2,
@@ -73,6 +82,7 @@ export default function ResultsPage() {
               }}
             >
               <img
+                className=".picture-container"
                 style={{
                   width: 357.2,
                   height: 357.2,
@@ -80,20 +90,12 @@ export default function ResultsPage() {
                   top: 0,
                   position: "absolute",
                 }}
-                src={healthy}
+                // src={sick}
+                // src={source}
+                src={`${results.prediction == 1 ? healthy : sick}`}
               />
-             
             </div>
-            <dhhhhhhiv
-              style={{
-                width: 254.71,
-                height: 147.67,
-                left: 48.97,
-                top: 56.9,
-                position: "absolute",
-              }}
-            >
-            </dhhhhhhiv>
+            {/* hhhhhhhhhhhhhhhhhhh */}
           </div>
           <div
             style={{
@@ -101,15 +103,21 @@ export default function ResultsPage() {
               top: 472.63,
               position: "absolute",
               color: "black",
-              fontSize: 36,
-              fontFamily: "Gilroy",
+              fontSize: 26,
+              textAlign : "center",
+
               fontWeight: "500",
               wordWrap: "break-word",
             }}
           >
-            Everything is stable
+            {`${
+              results.prediction == 1
+                ? "Everything is stable"
+                : "You need to schedule an appointement with your doctor"
+            }`}
           </div>
           <div
+            className="run-a-checkeup"
             style={{
               width: 226.28,
               height: 45.98,
@@ -119,23 +127,25 @@ export default function ResultsPage() {
               background: "#5040B0",
               borderRadius: 10,
             }}
-          />
-          <div
-            style={{
-              left: 183.4,
-              top: 573.69,
-              position: "absolute",
-              color: "white",
-              fontSize: 20,
-              fontFamily: "Gilroy",
-              fontWeight: "500",
-              wordWrap: "break-word",
-            }}
           >
-            Run a checkup
+            <div
+              style={{
+                left: 35,
+                top: 10,
+                position: "absolute",
+                color: "white",
+                fontSize: 20,
+
+                fontWeight: "500",
+                wordWrap: "break-word",
+              }}
+            >
+              Run a checkup
+            </div>
           </div>
         </div>
         <div
+          className="profileInNav"
           style={{
             width: 274.01,
             height: 70.79,
@@ -151,7 +161,7 @@ export default function ResultsPage() {
               position: "absolute",
               color: "black",
               fontSize: 20,
-              fontFamily: "Gilroy",
+
               fontWeight: "300",
               wordWrap: "break-word",
             }}
@@ -195,12 +205,14 @@ export default function ResultsPage() {
                 left: -8.75,
                 top: -6.54,
                 position: "absolute",
+                borderRadius: 20,
               }}
               src={mehdi}
             />
           </div>
         </div>
         <div
+          className="logo"
           style={{
             width: 192.61,
             height: 63.06,
@@ -218,13 +230,16 @@ export default function ResultsPage() {
               position: "absolute",
             }}
           >
-            <img src={logo}  style={{
-              width: 189.94,
-              height: 53.42,
-              left: 0,
-              top: 0,
-              position: "absolute",
-            }}/>
+            <img
+              src={logo}
+              style={{
+                width: 189.94,
+                height: 53.42,
+                left: 0,
+                top: 0,
+                position: "absolute",
+              }}
+            />
           </div>
           <div
             style={{
@@ -245,12 +260,12 @@ export default function ResultsPage() {
           style={{
             width: 39.13,
             height: 32.47,
-            left: 212.31,
+            left: 214.31,
             top: 78.67,
             position: "absolute",
             color: "#FF5C5C",
             fontSize: 24,
-            fontFamily: "Gilroy",
+
             fontWeight: "800",
             wordWrap: "break-word",
           }}
@@ -384,7 +399,7 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "black",
                 fontSize: 16,
-                fontFamily: "Gilroy",
+
                 fontWeight: "500",
                 wordWrap: "break-word",
               }}
@@ -401,12 +416,12 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "black",
                 fontSize: 16,
-                fontFamily: "Gilroy",
+
                 fontWeight: "500",
                 wordWrap: "break-word",
               }}
             >
-              37°C
+              {results.temperature}°C
             </div>
             <div
               style={{
@@ -418,7 +433,7 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "#9F9F9F",
                 fontSize: 14,
-                fontFamily: "Gilroy",
+
                 fontWeight: "300",
                 wordWrap: "break-word",
               }}
@@ -435,7 +450,7 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "#9F9F9F",
                 fontSize: 14,
-                fontFamily: "Gilroy",
+
                 fontWeight: "300",
                 wordWrap: "break-word",
               }}
@@ -452,7 +467,7 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "#9F9F9F",
                 fontSize: 14,
-                fontFamily: "Gilroy",
+
                 fontWeight: "300",
                 wordWrap: "break-word",
               }}
@@ -469,7 +484,7 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "#9F9F9F",
                 fontSize: 14,
-                fontFamily: "Gilroy",
+
                 fontWeight: "300",
                 wordWrap: "break-word",
               }}
@@ -486,7 +501,7 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "#9F9F9F",
                 fontSize: 14,
-                fontFamily: "Gilroy",
+
                 fontWeight: "300",
                 wordWrap: "break-word",
               }}
@@ -503,7 +518,7 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "#9F9F9F",
                 fontSize: 14,
-                fontFamily: "Gilroy",
+
                 fontWeight: "300",
                 wordWrap: "break-word",
               }}
@@ -520,7 +535,7 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "#9F9F9F",
                 fontSize: 14,
-                fontFamily: "Gilroy",
+
                 fontWeight: "300",
                 wordWrap: "break-word",
               }}
@@ -633,7 +648,6 @@ export default function ResultsPage() {
                 position: "absolute",
                 color: "black",
                 fontSize: 16,
-                fontFamily: "Gilroy",
                 fontWeight: "500",
                 wordWrap: "break-word",
               }}
@@ -650,7 +664,6 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "black",
                 fontSize: 16,
-                fontFamily: "Gilroy",
                 fontWeight: "500",
                 wordWrap: "break-word",
               }}
@@ -667,7 +680,6 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "#9F9F9F",
                 fontSize: 14,
-                fontFamily: "Gilroy",
                 fontWeight: "300",
                 wordWrap: "break-word",
               }}
@@ -684,7 +696,6 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "#9F9F9F",
                 fontSize: 14,
-                fontFamily: "Gilroy",
                 fontWeight: "300",
                 wordWrap: "break-word",
               }}
@@ -701,7 +712,6 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "#9F9F9F",
                 fontSize: 14,
-                fontFamily: "Gilroy",
                 fontWeight: "300",
                 wordWrap: "break-word",
               }}
@@ -718,7 +728,6 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "#9F9F9F",
                 fontSize: 14,
-                fontFamily: "Gilroy",
                 fontWeight: "300",
                 wordWrap: "break-word",
               }}
@@ -735,7 +744,6 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "#9F9F9F",
                 fontSize: 14,
-                fontFamily: "Gilroy",
                 fontWeight: "300",
                 wordWrap: "break-word",
               }}
@@ -752,7 +760,6 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "#9F9F9F",
                 fontSize: 14,
-                fontFamily: "Gilroy",
                 fontWeight: "300",
                 wordWrap: "break-word",
               }}
@@ -769,7 +776,6 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "#9F9F9F",
                 fontSize: 14,
-                fontFamily: "Gilroy",
                 fontWeight: "300",
                 wordWrap: "break-word",
               }}
@@ -882,7 +888,6 @@ export default function ResultsPage() {
                 position: "absolute",
                 color: "black",
                 fontSize: 16,
-                fontFamily: "Gilroy",
                 fontWeight: "500",
                 wordWrap: "break-word",
               }}
@@ -899,7 +904,6 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "black",
                 fontSize: 16,
-                fontFamily: "Gilroy",
                 fontWeight: "500",
                 wordWrap: "break-word",
               }}
@@ -916,7 +920,6 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "#9F9F9F",
                 fontSize: 14,
-                fontFamily: "Gilroy",
                 fontWeight: "300",
                 wordWrap: "break-word",
               }}
@@ -933,7 +936,6 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "#9F9F9F",
                 fontSize: 14,
-                fontFamily: "Gilroy",
                 fontWeight: "300",
                 wordWrap: "break-word",
               }}
@@ -950,7 +952,6 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "#9F9F9F",
                 fontSize: 14,
-                fontFamily: "Gilroy",
                 fontWeight: "300",
                 wordWrap: "break-word",
               }}
@@ -967,7 +968,6 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "#9F9F9F",
                 fontSize: 14,
-                fontFamily: "Gilroy",
                 fontWeight: "300",
                 wordWrap: "break-word",
               }}
@@ -984,7 +984,6 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "#9F9F9F",
                 fontSize: 14,
-                fontFamily: "Gilroy",
                 fontWeight: "300",
                 wordWrap: "break-word",
               }}
@@ -1001,7 +1000,6 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "#9F9F9F",
                 fontSize: 14,
-                fontFamily: "Gilroy",
                 fontWeight: "300",
                 wordWrap: "break-word",
               }}
@@ -1018,7 +1016,6 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "#9F9F9F",
                 fontSize: 14,
-                fontFamily: "Gilroy",
                 fontWeight: "300",
                 wordWrap: "break-word",
               }}
@@ -1132,7 +1129,6 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "black",
                 fontSize: 16,
-                fontFamily: "Gilroy",
                 fontWeight: "500",
                 wordWrap: "break-word",
               }}
@@ -1149,7 +1145,6 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "black",
                 fontSize: 16,
-                fontFamily: "Gilroy",
                 fontWeight: "500",
                 wordWrap: "break-word",
               }}
@@ -1166,7 +1161,6 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "#9F9F9F",
                 fontSize: 14,
-                fontFamily: "Gilroy",
                 fontWeight: "300",
                 wordWrap: "break-word",
               }}
@@ -1183,7 +1177,6 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "#9F9F9F",
                 fontSize: 14,
-                fontFamily: "Gilroy",
                 fontWeight: "300",
                 wordWrap: "break-word",
               }}
@@ -1200,7 +1193,6 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "#9F9F9F",
                 fontSize: 14,
-                fontFamily: "Gilroy",
                 fontWeight: "300",
                 wordWrap: "break-word",
               }}
@@ -1217,7 +1209,6 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "#9F9F9F",
                 fontSize: 14,
-                fontFamily: "Gilroy",
                 fontWeight: "300",
                 wordWrap: "break-word",
               }}
@@ -1234,7 +1225,6 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "#9F9F9F",
                 fontSize: 14,
-                fontFamily: "Gilroy",
                 fontWeight: "300",
                 wordWrap: "break-word",
               }}
@@ -1251,7 +1241,6 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "#9F9F9F",
                 fontSize: 14,
-                fontFamily: "Gilroy",
                 fontWeight: "300",
                 wordWrap: "break-word",
               }}
@@ -1268,7 +1257,6 @@ export default function ResultsPage() {
                 textAlign: "center",
                 color: "#9F9F9F",
                 fontSize: 14,
-                fontFamily: "Gilroy",
                 fontWeight: "300",
                 wordWrap: "break-word",
               }}
@@ -1278,6 +1266,7 @@ export default function ResultsPage() {
           </div>
         </div>
         <div
+          className="navBar"
           style={{
             width: 498.42,
             height: 29,
@@ -1293,7 +1282,6 @@ export default function ResultsPage() {
               position: "absolute",
               color: "black",
               fontSize: 24,
-              fontFamily: "Gilroy",
               fontWeight: "500",
               wordWrap: "break-word",
             }}
@@ -1307,7 +1295,6 @@ export default function ResultsPage() {
               position: "absolute",
               color: "black",
               fontSize: 24,
-              fontFamily: "Gilroy",
               fontWeight: "500",
               wordWrap: "break-word",
             }}
@@ -1321,7 +1308,6 @@ export default function ResultsPage() {
               position: "absolute",
               color: "black",
               fontSize: 24,
-              fontFamily: "Gilroy",
               fontWeight: "500",
               wordWrap: "break-word",
             }}
