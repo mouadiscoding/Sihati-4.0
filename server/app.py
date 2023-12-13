@@ -36,7 +36,6 @@ def predict():
     cp = int(form_data.get('cp'))
     trestbps_list = [71,72,73,74,75]
     trestbps = random.choice(trestbps_list)
-    #this value is not from form so we pick a random one in the list
     chol = int(form_data.get('chol'))
     fbs = int(form_data.get('fbs'))
     restecg = int(form_data.get('restecg'))
@@ -47,6 +46,9 @@ def predict():
     slope = int(form_data.get('slope'))
     ca = int(form_data.get('ca'))
     thal = int(form_data.get('thal'))
+
+    temperature_list = [37.3, 37,8, 38, 37.5, 37,6]
+    temperature = random.choice(temperature_list)
 
     data = {
     'age': [age],
@@ -86,7 +88,11 @@ def predict():
     prediction = model.predict(X) #make predictions .
     print(prediction)
 
-    response_data = {"prediction": prediction[0].item()}
+
+    response_data = {"prediction": prediction[0].item(),
+                     "heart": thalach,
+                     "blood": trestbps,
+                     "temperature": temperature}
     return jsonify(response_data)
     #return render_template("index.html", prediction_text = "health care prediction {}".format(prediction))
 
