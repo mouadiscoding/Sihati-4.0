@@ -51,7 +51,7 @@ export const FormPage = () => {
     } catch (error) {
       console.error("Error submitting form:", error);
     }
-    // navigate("/resultsPage");
+    navigate("/resultsPage");
   };
   return (
     <div className="predictionForm">
