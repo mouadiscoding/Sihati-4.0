@@ -4,12 +4,17 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function ResultsPage() {
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState("");
 
   useEffect(() => {
     axios
-      .get("/predictions")
-      .then((response) => setResults(response.data))
+      .get("http://127.0.0.1:8000/prediction", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      })
+      .then((response) => setResults(response.results))
       .catch((error) => console.error("Error fetching data: ", error));
   }, []);
 

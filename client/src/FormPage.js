@@ -30,7 +30,7 @@ export const FormPage = () => {
     try {
       // Send form data to the Flask backend
       const response = await axios.post(
-        "http://127.0.0.1:5000/prediction",
+        "http://127.0.0.1:8000/prediction",
         formData,
         {
           headers: {

@@ -32,14 +32,19 @@ def user(usr):
 
 # *******************************************
 
-@app.route('/prediction', methods=["POST"])
+@app.route('/prediction', methods=["POST","GET"])
 @cross_origin(supports_credentials=True)
 def submit_form():
     data = request.json
     print(data) 
+    response_data = {"prediction": "1",
+                     "heart": "thalach",
+                     "blood": "trestbps",
+                     "temperature": "40"}
+    return jsonify(response_data)
     #Assuming data is sent in JSON format
     #Process the form data as needed
-    return "hello"
+    
     
 #, form_data=data)
 
