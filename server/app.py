@@ -1,5 +1,4 @@
 from flask import Flask , render_template, jsonify, request
-import random
 import pickle
 import numpy as np
 import pandas as pd
@@ -8,11 +7,12 @@ from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 from sklearn.compose import ColumnTransformer
 from flask_cors import CORS,cross_origin
+import random
+
 #creating an app object using the Flask class
 app = Flask(__name__)
 
-CORS(app,support_credentials=True) 
-
+CORS(app,origins='http://localhost:3000', supports_credentials=True) 
 #load the pickel model 
 model = pickle.load(open("../models/heart_disease_classifier.pkl", "rb"))
 
@@ -23,8 +23,8 @@ def Home():
     # print(column_names)
     return render_template("index.html") #<----index.html file should be in 'templates' folder .
 
-@app.route("/predict", methods = ['POST'])
-@cross_origin(supports_credentials=True)
+@app.route("/prediction", methods = ['POST'])
+# @cross_origin(supports_credentials=True)
 def predict():
 
     df = pd.read_csv('../data/heart_disease.csv')
@@ -84,8 +84,11 @@ def predict():
     encoded_X = pd.DataFrame(encoded_X)
     X = encoded_X.head(1)
     prediction = model.predict(X) #make predictions .
+    print(prediction)
 
-    return render_template("index.html", prediction_text = "health care prediction {}".format(prediction))
+    response_data = {"prediction": prediction[0].item()}
+    return jsonify(response_data)
+    #return render_template("index.html", prediction_text = "health care prediction {}".format(prediction))
 
 
 
