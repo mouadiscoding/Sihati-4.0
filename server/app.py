@@ -11,7 +11,7 @@ import random
 
 #creating an app object using the Flask class
 app = Flask(__name__)
-
+random.seed()
 CORS(app,origins='http://localhost:3000', supports_credentials=True) 
 #defining a key for session
 app.config['SECRET_KEY'] = '123'
@@ -29,6 +29,8 @@ def Home():
 @cross_origin(supports_credentials=True)
 def predict():
 
+    
+
     df = pd.read_csv('../data/heart_disease.csv')
     df = df[(df.thal != '1') & (df.thal != '2')]
 
@@ -37,20 +39,22 @@ def predict():
     sex = int(form_data.get('sex'))
     cp = int(form_data.get('cp'))
     trestbps_list = [71,72,73,74,75]
-    trestbps = random.choice(trestbps_list)
+    
+    trestbps = random.randint(70, 76)
     chol = int(form_data.get('chol'))
     fbs = int(form_data.get('fbs'))
     restecg = int(form_data.get('restecg'))
+    
     thalach_list = [80,80.5,81,81.5,82,82.5,83,83.5,84]
-    thalach=random.choice(thalach_list)  #not from form too 
+    thalach = round(random.uniform(80, 85), 1)
     exang = int(form_data.get('exang'))
     oldpeak = float(form_data.get('oldpeak'))
     slope = int(form_data.get('slope'))
     ca = int(form_data.get('ca'))
     thal = int(form_data.get('thal'))
 
-    temperature_list = [37.3, 37,8, 38, 37.5, 37,6]
-    temperature = random.choice(temperature_list)
+    temperature_list = [37.3, 37.8, 38, 37.5, 37.6]
+    temperature = round(random.uniform(37.3, 38), 1)
 
     data = {
     'age': [age],
@@ -89,7 +93,9 @@ def predict():
     X = encoded_X.head(1)
     prediction = model.predict(X) #make predictions .
     print(prediction)
-
+    
+    app.logger.info("Received request with data: %s", form_data)
+    
 
     response_data = {"prediction": prediction[0].item(),
                      "heart": thalach,
@@ -102,6 +108,8 @@ def predict():
     g.response_data=response_data
 
     return jsonify(response_data)
+
+    
     #return render_template("index.html", prediction_text = "health care prediction {}".format(prediction))
 
 @app.route('/getprediction', methods=["GET"])
@@ -113,27 +121,6 @@ def result():
         response_data = session.get('response_data', None) 
         print(response_data)
         return (response_data)
-
-# @app.route("/predict", methods=['POST'])
-# def predict():
-#     selected_features = ['radius_mean', 'perimeter_mean', 'area_mean', 'texture_mean']
-#     input_values = [float(request.form[name]) for name in selected_features]
-#     features = input_values + mean_data.tolist()
-
-#     features = [np.array(features)]
-
-#     imputer = SimpleImputer(strategy='mean')
-#     features = imputer.fit_transform(features)
-
-#     prediction = model.predict(features)
-#     return render_template("index.html", prediction_text="Breast cancer prediction {}".format(prediction))
-
-
-
-
-
-
-
 
 
 if __name__ == "__main__": #main function 
