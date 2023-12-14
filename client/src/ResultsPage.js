@@ -92,7 +92,7 @@ export default function ResultsPage() {
                 }}
                 // src={sick}
                 // src={source}
-                src={`${results.prediction == 1 ? healthy : sick}`}
+                src={`${results.prediction == 0 ? healthy : sick}`}
               />
             </div>
             {/* hhhhhhhhhhhhhhhhhhh */}
@@ -421,7 +421,7 @@ export default function ResultsPage() {
                 wordWrap: "break-word",
               }}
             >
-              {results.temperature}°C
+              {/* {results.temperature}°C */} 37°C
             </div>
             <div
               style={{

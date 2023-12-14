@@ -51,7 +51,7 @@ export const FormPage = () => {
     } catch (error) {
       console.error("Error submitting form:", error);
     }
-    // navigate("/resultsPage");
+    navigate("/resultsPage");
   };
   return (
     <div className="predictionForm">
@@ -422,7 +422,7 @@ export const FormPage = () => {
 
         <br />
         <span>
-          Prediction: {prediction !== null ? prediction : "No prediction"}
+          {/* Prediction: {prediction !== null ? prediction : "No prediction"} */}
         </span>
       </form>
     </div>
