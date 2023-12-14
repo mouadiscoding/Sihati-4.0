@@ -27,7 +27,7 @@ export default function ResultsPage() {
   // useEffect(() => {
   //   // Your condition and setSource logic
   //   setSource(`${results.prediction == 1 ? healthy : sick}`);
-  // }, [results.prediction]);
+  // }, );
 
   // console.log(results.temperature);
   return (

@@ -1,4 +1,4 @@
-from flask import Flask , render_template, jsonify, request,g
+from flask import Flask , render_template, jsonify, request,g,session
 import pickle
 import numpy as np
 import pandas as pd
@@ -13,6 +13,8 @@ import random
 app = Flask(__name__)
 
 CORS(app,origins='http://localhost:3000', supports_credentials=True) 
+#defining a key for session
+app.config['SECRET_KEY'] = '123'
 #load the pickel model 
 model = pickle.load(open("../models/heart_disease_classifier.pkl", "rb"))
 
@@ -94,6 +96,8 @@ def predict():
                      "blood": trestbps,
                      "temperature": temperature}
     
+    session['response_data'] = response_data
+    
     #making response_data a global variable
     g.response_data=response_data
 
@@ -105,9 +109,10 @@ def predict():
 def result():
     
     if request.method=="GET":
-        response__data=getattr(g,"response_data",None)
-        print(response__data)
-        return (response__data)
+        # response__data=getattr(g,"response_data",None)
+        response_data = session.get('response_data', None) 
+        print(response_data)
+        return (response_data)
 
 # @app.route("/predict", methods=['POST'])
 # def predict():

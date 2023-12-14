@@ -1,8 +1,12 @@
-from flask import Flask, redirect, url_for, render_template, request, jsonify
+from flask import Flask, redirect, url_for, render_template, request, jsonify,g,session
 from flask_cors import CORS,cross_origin
 app=Flask(__name__);
 
 CORS(app,origins='http://localhost:3000',support_credentials=True)  # Enables CORS for all routes
+
+
+#declaring a key :
+app.config['SECRET_KEY'] = 'your_secret_key_here'
 
 
 ####testing get (works)
@@ -37,6 +41,8 @@ def user(usr):
 def submit_form():
     if request.method == "POST":
         data = request.json
+        # g.data=data
+        session['data'] = data
         print(data) 
         return ("form submitted")
     
@@ -48,11 +54,15 @@ def submit_form():
 def result():
     
     if request.method=="GET":
-        response_data = {"prediction": "0",
+        # data=getattr(g,'data',None)
+        data = session.get('data', None)                                       
+        print(data)
+        response_data = {"prediction": "1",
                      "heart": "thalach",
                      "blood": "trestbps",
                      "temperature": "40"}
-        print(response_data)
+        print("this is responsefrom getprediction" )
+        print(data)
         return (response_data)
     #Assuming data is sent in JSON format
     #Process the form data as needed    
