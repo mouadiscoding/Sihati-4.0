@@ -1,12 +1,18 @@
 import React from "react";
 import logo from "./logo.svg";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./login.css";
 
 const Login = () => {
+    const navigate = useNavigate();
+    const handleSubmitLogin=(e)=>{
+        e.preventDefault();
+        navigate("/loadingPage");
+    }
   return (
     <div className="formContainer">
       <img src={logo} className="logo" />
-      <form className="loginForm">
+      <form className="loginForm" onSubmit={handleSubmitLogin}>
         <h2>Connectez-vous</h2>
         <input type="text" name="email" placeholder="nom d'utilisateur" />
         <br />

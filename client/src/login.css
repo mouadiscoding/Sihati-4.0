@@ -40,6 +40,7 @@ input[type="text"] {
   padding-left: 1rem;
   height: 40px;
   font-size: 18px;
+  color: rgb(36, 36, 36);
 }
 input[type="checkbox"] {
   width: 1.5em;
@@ -76,6 +77,7 @@ span {
   margin-top: 3px;
   font-size: 13px;
   text-decoration: underline;
+  cursor: pointer;
 }
 .loginSubmit:hover {
   transform: scale(1.1);

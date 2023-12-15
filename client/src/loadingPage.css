@@ -1,5 +1,28 @@
-.loadingPageContainer{
-    height: 100vh;
-    width: 100vw;
-    background-color: #5040b0; ;
+.loadingPageContainer {
+  height: 100vh;
+  width: 100vw;
+  background-color: #5040b0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.loadingPageWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-25px);
+}
+.healthy {
+  width: 15em;
+  margin: 2rem 0;
+}
+.text {
+  /* color: white;
+    margin-bottom: 5rem; */
+}
+
+.logo-white {
+  transform: translateY(-90px);
 }

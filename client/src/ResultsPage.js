@@ -1,6 +1,5 @@
 import "./App.css";
 import "./animation.css";
-import Landing from "./Landing";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import mehdi from "./mehdi.jpeg";
