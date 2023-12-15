@@ -416,13 +416,18 @@ export const FormPage = () => {
             </select>
             <br />
             <br />
-            <input type="submit" value="Submit" onChange={handleChange} />
+            <input
+              className="formSubmit"
+              type="submit"
+              value="Submit"
+              onChange={handleChange}
+            />
           </div>
         </div>
 
         <br />
         <span>
-          {/* Prediction: {prediction !== null ? prediction : "No prediction"} */}
+          Prediction: {prediction !== null ? prediction : "No prediction"}
         </span>
       </form>
     </div>

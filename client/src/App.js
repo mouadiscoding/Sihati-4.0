@@ -1,34 +1,23 @@
-import "./App.css";
 import Landing from "./Landing";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Router, Route, Link } from "react-router-dom";
 import { FormPage } from "./FormPage";
-import  ResultsPage  from "./ResultsPage";
+import ResultsPage from "./ResultsPage";
+import Login from "./Login";
+import LoadingPage from "./LoadingPage";
 
 function App() {
   return (
     <BrowserRouter>
-      {/* <nav>
-        <ul>
-          <li>
-            <Link to="/">Landing</Link>
-          </li>
-          <li>
-            <Link to="/formPage">formPage</Link>
-          </li>
-        </ul>
-      </nav> */}
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/formPage" element={<FormPage />} />
         <Route path="/resultsPage" element={<ResultsPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/loadingPage" element={<LoadingPage />} />
       </Routes>
     </BrowserRouter>
   );
 }
 
 export default App;
-
-// value={formData.lastName}
-// onChange={handleChange}
-//value={formData.}
