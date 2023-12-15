@@ -6,7 +6,7 @@ import mehdi from "./mehdi.jpeg";
 import healthy from "./Healthy.png";
 import sick from "./Sick.png";
 import notification from "./Notification.png";
-import logo from "./sihati.png";
+import logo from "./logo.svg";
 
 export default function ResultsPage() {
   const [results, setResults] = useState("");
@@ -138,7 +138,6 @@ export default function ResultsPage() {
               wordWrap: "break-word",
             }}
           >
-            
             {`${
               results.prediction == 0
                 ? "Everything is stable"
@@ -270,37 +269,8 @@ export default function ResultsPage() {
               }}
             />
           </div>
-          <div
-            style={{
-              width: 191.33,
-              height: 2.07,
-              left: 1.29,
-              top: 60.99,
-              position: "absolute",
-              background: "rgba(40.13, 35.82, 87.54, 0.74)",
-              boxShadow:
-                "15.800000190734863px 15.800000190734863px 15.800000190734863px ",
-              borderRadius: 9999,
-              filter: "blur(15.80px)",
-            }}
-          />
         </div>
-        <div
-          style={{
-            width: 39.13,
-            height: 32.47,
-            left: 214.31,
-            top: 78.67,
-            position: "absolute",
-            color: "#FF5C5C",
-            fontSize: 24,
 
-            fontWeight: "800",
-            wordWrap: "break-word",
-          }}
-        >
-          4.0
-        </div>
         <div
           style={{
             width: 865.29,
