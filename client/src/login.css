@@ -36,7 +36,8 @@ h2 {
   text-align: center;
   color: white;
 }
-input[type="text"] {
+input[type="text"],
+input[type="password"] {
   padding-left: 1rem;
   height: 40px;
   font-size: 18px;

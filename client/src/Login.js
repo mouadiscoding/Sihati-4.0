@@ -4,11 +4,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "./login.css";
 
 const Login = () => {
-    const navigate = useNavigate();
-    const handleSubmitLogin=(e)=>{
-        e.preventDefault();
-        navigate("/loadingPage");
-    }
+  const navigate = useNavigate();
+  const handleSubmitLogin = (e) => {
+    e.preventDefault();
+    navigate("/loadingPage");
+  };
   return (
     <div className="formContainer">
       <img src={logo} className="logo" />
@@ -16,7 +16,7 @@ const Login = () => {
         <h2>Connectez-vous</h2>
         <input type="text" name="email" placeholder="nom d'utilisateur" />
         <br />
-        <input type="text" name="password" placeholder="mot de passe" />
+        <input type="password" name="password" placeholder="mot de passe" />
         <br />
         <div className="resterConnectés">
           <input type="checkbox" className="checkbox" />

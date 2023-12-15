@@ -11,10 +11,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Landing />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/Landing" element={<Landing />} />
         <Route path="/formPage" element={<FormPage />} />
         <Route path="/resultsPage" element={<ResultsPage />} />
-        <Route path="/login" element={<Login />} />
         <Route path="/loadingPage" element={<LoadingPage />} />
         <Route
           path="/loadingPageValidated"

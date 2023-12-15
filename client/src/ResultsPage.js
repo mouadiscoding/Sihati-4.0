@@ -127,11 +127,11 @@ export default function ResultsPage() {
           </div>
           <div
             style={{
-              left: 89.62,
+              left: 9.62,
               top: 472.63,
               position: "absolute",
               color: "black",
-              fontSize: 26,
+              fontSize: 24,
               textAlign: "center",
 
               fontWeight: "500",
