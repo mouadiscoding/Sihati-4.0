@@ -127,7 +127,7 @@ export default function ResultsPage() {
           </div>
           <div
             style={{
-              left: 9.62,
+              left: 130,
               top: 472.63,
               position: "absolute",
               color: "black",
@@ -138,6 +138,7 @@ export default function ResultsPage() {
               wordWrap: "break-word",
             }}
           >
+            
             {`${
               results.prediction == 0
                 ? "Everything is stable"
