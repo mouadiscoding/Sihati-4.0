@@ -24,39 +24,38 @@ export default function ResultsPage() {
       .catch((error) => console.error("Error fetching data: ", error));
   }, []);
 
-// export default function ResultsPage() {
-//   const [results, setResults] = useState({
-//     prediction: "",
-//     temperature: "",
-//     heart: "",
-//     blood: "",
-//   });
+  // export default function ResultsPage() {
+  //   const [results, setResults] = useState({
+  //     prediction: "",
+  //     temperature: "",
+  //     heart: "",
+  //     blood: "",
+  //   });
 
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         const response = await axios.get("http://localhost:8000/getprediction", {
-//           headers: {
-//             "Content-Type": "application/json",
-//           },
-//           withCredentials: true,
-//         });
-//         setResults(response.data);
-//       } catch (error) {
-//         console.error("Error fetching data: ", error);
-//       }
-//     };
+  //   useEffect(() => {
+  //     const fetchData = async () => {
+  //       try {
+  //         const response = await axios.get("http://localhost:8000/getprediction", {
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //           },
+  //           withCredentials: true,
+  //         });
+  //         setResults(response.data);
+  //       } catch (error) {
+  //         console.error("Error fetching data: ", error);
+  //       }
+  //     };
 
-//     // Fetch data initially
-//     fetchData();
+  //     // Fetch data initially
+  //     fetchData();
 
-//     // Set up interval to fetch data every, for example, 5 seconds
-//     const intervalId = setInterval(fetchData, 5000);
+  //     // Set up interval to fetch data every, for example, 5 seconds
+  //     const intervalId = setInterval(fetchData, 5000);
 
-//     // Clean up the interval on component unmount
-//     return () => clearInterval(intervalId);
-//   }, []);
-
+  //     // Clean up the interval on component unmount
+  //     return () => clearInterval(intervalId);
+  //   }, []);
 
   // console.log(results.temperature);
   return (
@@ -121,7 +120,7 @@ export default function ResultsPage() {
                 }}
                 // src={sick}
                 // src={source}
-                src={`${results.prediction == 1 ? healthy : sick}`}
+                src={`${results.prediction == 0 ? healthy : sick}`}
               />
             </div>
             {/* hhhhhhhhhhhhhhhhhhh */}
@@ -133,7 +132,7 @@ export default function ResultsPage() {
               position: "absolute",
               color: "black",
               fontSize: 26,
-              textAlign : "center",
+              textAlign: "center",
 
               fontWeight: "500",
               wordWrap: "break-word",

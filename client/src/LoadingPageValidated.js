@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import SyncLoader from "react-spinners/SyncLoader";
 import healthy from "./healthy.svg";
 import logo from "./logo-white.svg";
-
+import verified from "./verified.svg";
 
 const LoadingPage = () => {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ const LoadingPage = () => {
   //     setTimeout(navigate("/resultsPage"), 5000);
   //   }, []);
   const handleClick = (e) => {
-    navigate("/loadingPageValidated");
+    navigate("/FormPage");
   };
 
   const color = "#ffffff";
@@ -22,19 +22,8 @@ const LoadingPage = () => {
     <div className="loadingPageContainer" onClick={handleClick}>
       <div className="loadingPageWrapper">
         <img className="logo-white" src={logo} />
-        <h2 className="title">Turn on the device and wait for pairing</h2>
-        <img src={healthy} className="healthy" />
-        <SyncLoader
-          height="800"
-          width="800"
-          radius="9"
-          color="#ffffff"
-          ariaLabel="three-dots-loading"
-          speedMultiplier={0.5}
-          wrapperStyle={{}}
-          wrapperClassName=""
-          visible={true}
-        />
+        <h2 className="title">device paired successfully</h2>
+        <img src={verified} className="healthy" />
       </div>
     </div>
   );

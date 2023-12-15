@@ -5,6 +5,7 @@ import { FormPage } from "./FormPage";
 import ResultsPage from "./ResultsPage";
 import Login from "./Login";
 import LoadingPage from "./LoadingPage";
+import LoadingPageValidated from "./LoadingPageValidated";
 
 function App() {
   return (
@@ -15,6 +16,10 @@ function App() {
         <Route path="/resultsPage" element={<ResultsPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/loadingPage" element={<LoadingPage />} />
+        <Route
+          path="/loadingPageValidated"
+          element={<LoadingPageValidated />}
+        />
       </Routes>
     </BrowserRouter>
   );
