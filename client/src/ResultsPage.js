@@ -139,7 +139,7 @@ export default function ResultsPage() {
             }}
           >
             {`${
-              results.prediction == 1
+              results.prediction == 0
                 ? "Everything is stable"
                 : "You need to schedule an appointement with your doctor"
             }`}
