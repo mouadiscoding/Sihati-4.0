@@ -16,8 +16,7 @@ Sihati 4.0 is a Raspberry Pi-based project designed to provide real-time health 
 
 ## Technology Stack
 - **Raspberry Pi 4**: The core hardware platform.
-- **Java**: Programming language for script development.
-- **Sensor Libraries**: Necessary Arduino librarires to interact with the sensors.
+- **Python**: Programming language for script development.
 - **Machine Learning**: Scikit-learn classification and regression models.
 - **Flask**: Back-end development.
 - **React**: Front-end development.
